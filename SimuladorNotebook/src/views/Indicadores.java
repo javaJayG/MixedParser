@@ -15,6 +15,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Indicadores extends JFrame {
 
@@ -86,6 +88,7 @@ public class Indicadores extends JFrame {
 		lblResultadoDeAplicar = new JLabel("<html>Resultado de <br>aplicar indicador:</htlm>");
 		
 		btnCrearNuevoIndicador = new JButton("Guardar nuevo indicador");
+		
 		
 		lblNuevoIndicador = new JLabel("<html>Indicador a guardar: <br><b>NombreIndicador=expresion</b>, tal que: <br>expresion incluye indicadores y/o cuentas</html>");
 		
@@ -169,8 +172,11 @@ public class Indicadores extends JFrame {
 	}
 
 	private void createEvents() {
-		// TODO Auto-generated method stub
-		
+		btnCrearNuevoIndicador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 	}
 
 	

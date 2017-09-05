@@ -1,6 +1,5 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,6 +15,10 @@ import java.awt.event.ActionEvent;
 
 public class MainView extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel ctpMain;
 	private JButton btnEmpresasWindow;
 	private JButton btnIndicadoresWindow;
@@ -72,7 +75,7 @@ public class MainView extends JFrame {
 		btnIndicadoresWindow = new JButton("Indicadores");
 		
 		
-		btnMetodologiasWindow = new JButton("Metodologías");
+		btnMetodologiasWindow = new JButton("Metodolog�as");
 		GroupLayout gl_ctpMain = new GroupLayout(ctpMain);
 		gl_ctpMain.setHorizontalGroup(
 			gl_ctpMain.createParallelGroup(Alignment.LEADING)

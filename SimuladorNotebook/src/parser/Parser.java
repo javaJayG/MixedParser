@@ -24,7 +24,7 @@ public class Parser
 	}
   
   //TODO
-  //necesito saber qué cuentas utilicé,para asi saber que ondita
+  //necesito saber quÃ© cuentas utilicÃ©,para asi saber que ondita
   //con el tema de que cuentas son las que el indicador utiliza y asi saber
   //si puedo el indicador a una empresa determinada... no voy a poder aplicar
   //un indicador a una cuenta que no tiene las cuentas que necesita
@@ -32,7 +32,7 @@ public class Parser
   
   
   
-    //esta función debe devolver un string con los valores de las cuentas obtenidos
+    //esta funciÃ³n debe devolver un string con los valores de las cuentas obtenidos
   private String transformarVariablesANumeros(String expr)
   {
     boolean recognizingVar = false ;
@@ -48,20 +48,20 @@ public class Parser
         if ( !recognizingVar )  {
           recognizingVar = true ;
         }
-        //Encontré la variable que se halla más a la izquierda de la expresión,
+        //EncontrÃ³ la variable que se halla mÃ¡s a la izquierda de la expresiÃ³n,
         //la cual era la unica que quedaba
         if (i == 0)
         {
-          //encontró una variable que fue leída de derecha a izq
-          variableName = ScalaUtils.reverse(resultado);
+          //encontrï¿½ una variable que fue leï¿½da de derecha a izq
+          variableName = ScalaUtils.reverseThis(resultado);
           
-          //expresionFinal tiene la concatenación parcial de haber
+          //expresionFinal tiene la concatenaciï¿½n parcial de haber
           //reemplazado los nombres de variables por Doubles
           String strAux = expresionFinal ;
           //TODO: poner bloques try catch para manejar una variable sintacticamente incorrecta
-          //si estaba reconociendo una variable y encontré otra cosa
+          //si estaba reconociendo una variable y encontrï¿½ otra cosa
           
-          //la expresión final es con el reemplazo de todas las variables a un double
+          //la expresiï¿½n final es con el reemplazo de todas las variables a un double
           //strAux
           if ( cuentasHandler.existeLaCuenta(variableName) )
           {
@@ -78,9 +78,9 @@ public class Parser
       {
         if ( recognizingVar  )
         {
-          variableName = ScalaUtils.reverse(resultado);
+          variableName = ScalaUtils.reverseThis(resultado);
           String strAux = expresionFinal;
-          //si estaba reconociendo una variable y encontré otra cosa
+          //si estaba reconociendo una variable y encontrï¿½ otra cosa
           if ( cuentasHandler.existeLaCuenta(variableName) )
           {
         	  expresionFinal = expr.charAt(i) + String.valueOf(0) + strAux;
