@@ -1,12 +1,12 @@
 package testDivideIdAndExpression;
 
 import tipos.Expresion;
+import unrepeatedList.CuentasHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import unrepeatedList.CuentasHandler;
 
 import scala.ScalaUtils;
 
@@ -15,7 +15,7 @@ public class TestDivideIndicador {
 	String expresion ;
 	String formulaString ;
 	List<String> cuentas;
-	CuentasHandler cuentasHandler ;
+	CuentasHandler cuentasHandler;
 	
 	public static void main ( String[] args)
 	{
@@ -26,21 +26,23 @@ public class TestDivideIndicador {
 	{
 		this.cuentasHandler = new CuentasHandler();
 		this.cuentas = new ArrayList<>();
-		//Si queda un string envÃ­a NumberFormatException por EBITDA
+		//Si queda un string envía NumberFormatException por EBITDA
 		
-		obtainSidesOfExp("IdIndicador=4+EBITDAH+-8/0");
-		System.out.println("ExpresiÃ³n: "+this.expresion);
+		obtainSidesOfExp("IdIndicador=4+EBITDA+-8/0");
+		System.out.println("Expresión: "+this.expresion);
 		imprimirIdAndformula();
 	}
-	
+	//
 	public void imprimirIdAndformula()
 	{
-		System.out.println("FÃ³rmula: "+this.formulaString);
-		System.out.println("ExpresiÃ³n: "+this.expresion);
+		System.out.println("Fórmula: "+this.formulaString);
+		System.out.println("Expresión: "+this.expresion);
 		String formula = transformarVariablesANumeros(this.expresion);
 		try
 		{
 			System.out.println(ScalaUtils.eval(formula));
+			System.out.println(ScalaUtils.esIndicadorValido(formula));
+			System.out.println(ScalaUtils.sePuedeAplicarA(formula));
 			System.out.println("El indicador se puede cargar");
 		}
 		catch (NumberFormatException e)
@@ -65,20 +67,20 @@ public class TestDivideIndicador {
 	        if ( !recognizingVar )  {
 	          recognizingVar = true ;
 	        }
-	        //EncontrÃ³ la variable que se halla mÃ¡s a la izquierda de la expresiÃ³n,
+	        //Encontré la variable que se halla más a la izquierda de la expresión,
 	        //la cual era la unica que quedaba
 	        if (i == 0)
 	        {
-	          //encontrï¿½ una variable que fue leï¿½da de derecha a izq
+	          //encontró una variable que fue leída de derecha a izq
 	          variableName = ScalaUtils.reverseThis(resultado);
 	          
-	          //expresionFinal tiene la concatenaciï¿½n parcial de haber
+	          //expresionFinal tiene la concatenación parcial de haber
 	          //reemplazado los nombres de variables por Doubles
 	          String strAux = expresionFinal ;
 	          //TODO: poner bloques try catch para manejar una variable sintacticamente incorrecta
-	          //si estaba reconociendo una variable y encontrï¿½ otra cosa
+	          //si estaba reconociendo una variable y encontró otra cosa
 	          
-	          //la expresiï¿½n final es con el reemplazo de todas las variables a un double
+	          //la expresión final es con el reemplazo de todas las variables a un double
 	          //strAux
 	          if ( cuentasHandler.existeLaCuenta(variableName) )
 	          {
@@ -98,7 +100,7 @@ public class TestDivideIndicador {
 	        {
 	          variableName = ScalaUtils.reverseThis(resultado);
 	          String strAux = expresionFinal;
-	          //si estaba reconociendo una variable y encontrÃ³ otra cosa
+	          //si estaba reconociendo una variable y encontré otra cosa
 	          if ( cuentasHandler.existeLaCuenta(variableName) )
 	          {
 	        	  expresionFinal = expr.charAt(i) + String.valueOf(0) + strAux;

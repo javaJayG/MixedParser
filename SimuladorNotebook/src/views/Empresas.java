@@ -22,6 +22,8 @@ import javax.swing.event.ListSelectionEvent;
 import repositorios.*;
 import tipos.*;
 import javax.swing.ListSelectionModel;
+import javax.swing.JTextPane;
+import javax.swing.border.TitledBorder;
 
 public class Empresas extends JFrame {
 
@@ -32,6 +34,7 @@ public class Empresas extends JFrame {
 	private static List<Empresa> empresas ;
 	private static List <Cuenta> cuentas ;
 	private static List <Periodo> periodos ;
+	private JTextPane txtPnResultado;
 
 	/**
 	 * Launch the application.
@@ -98,12 +101,15 @@ public class Empresas extends JFrame {
 		
 		JLabel lblPeriodo = new JLabel("Periodo");
 		lblPeriodo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JPanel pnlResultado = new JPanel();
+		pnlResultado.setBorder(new TitledBorder(null, "Resultado", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GroupLayout gl_ctpMain = new GroupLayout(ctpMain);
 		gl_ctpMain.setHorizontalGroup(
 			gl_ctpMain.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ctpMain.createSequentialGroup()
 					.addGap(23)
-					.addGroup(gl_ctpMain.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_ctpMain.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_ctpMain.createSequentialGroup()
 							.addComponent(lstEmpresas, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
 							.addGap(58)
@@ -115,7 +121,8 @@ public class Empresas extends JFrame {
 							.addGap(212)
 							.addComponent(lblCuenta, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 							.addGap(210)
-							.addComponent(lblPeriodo, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(lblPeriodo, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE))
+						.addComponent(pnlResultado, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		gl_ctpMain.setVerticalGroup(
@@ -128,11 +135,32 @@ public class Empresas extends JFrame {
 						.addComponent(lblPeriodo, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_ctpMain.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lstEmpresas, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lstCuentas, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lstPeriodos, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE))
-					.addGap(78))
+						.addComponent(lstEmpresas, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lstCuentas, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lstPeriodos, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(pnlResultado, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		txtPnResultado = new JTextPane();
+		txtPnResultado.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		GroupLayout gl_pnlResultado = new GroupLayout(pnlResultado);
+		gl_pnlResultado.setHorizontalGroup(
+			gl_pnlResultado.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_pnlResultado.createSequentialGroup()
+					.addContainerGap(19, Short.MAX_VALUE)
+					.addComponent(txtPnResultado, GroupLayout.PREFERRED_SIZE, 696, GroupLayout.PREFERRED_SIZE)
+					.addGap(8))
+		);
+		gl_pnlResultado.setVerticalGroup(
+			gl_pnlResultado.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_pnlResultado.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(txtPnResultado, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(7))
+		);
+		pnlResultado.setLayout(gl_pnlResultado);
 		ctpMain.setLayout(gl_ctpMain);
 	}
 	//////////////////////////////////////////////////////////////////////
@@ -146,6 +174,7 @@ public class Empresas extends JFrame {
 			public void valueChanged(ListSelectionEvent e) {
 				DefaultListModel<String> listModel = new DefaultListModel<String>();
 				lstCuentas.setModel(listModel);
+				txtPnResultado.setText("");
 				int empresa = lstEmpresas.getSelectedIndex();
 				cuentas = empresas.get(empresa).getCuentas();
 				cuentas.forEach(a -> listModel.addElement(a.getNombre()));
@@ -157,6 +186,7 @@ public class Empresas extends JFrame {
 				DefaultListModel<String> listModel = new DefaultListModel<String>();
 				lstPeriodos.setModel(listModel);
 				int cuenta = lstCuentas.getSelectedIndex();
+				txtPnResultado.setText("");
 				if ( cuenta >= 0)
 				{
 					periodos = cuentas.get(cuenta).getPeriodos();
@@ -170,7 +200,7 @@ public class Empresas extends JFrame {
 				int periodo = lstPeriodos.getSelectedIndex();
 				if (periodo >= 0) {
 					int cotizacion = periodos.get(periodo).getCotizacion();
-					JOptionPane.showMessageDialog(null, "La cotización fue de $"+cotizacion);
+					txtPnResultado.setText("$"+cotizacion);
 				}
 			}
 		});

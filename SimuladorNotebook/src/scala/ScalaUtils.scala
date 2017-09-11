@@ -7,6 +7,32 @@ object ScalaUtils {
     original.reverse
   }
   
+   def esIndicadorValido(expresion:String):Boolean = {
+   try
+   {
+   	  eval(expresion)
+    	true
+    }
+    catch
+    {
+      case e : ArithmeticException => true
+    }
+  }
+   
+   def sePuedeAplicarA(expresion:String):Boolean = {
+     if ( eval(expresion).isInfinite())
+     {
+       println("Infinito!")
+       false
+     }
+     else
+     {
+       println("Correcto, es un número!")
+       true
+     }
+   }
+   
+  
   def eval (expr:String):Double = 
   {
     
@@ -71,14 +97,15 @@ object ScalaUtils {
         case '+' => eval(expr.substring(0, opLoc))+eval(expr.substring(opLoc+1,expr.length))
         case '-' => eval(expr.substring(0, opLoc))-eval(expr.substring(opLoc+1,expr.length))
         case '*' => eval(expr.substring(0, opLoc))*eval(expr.substring(opLoc+1,expr.length))
-        case '/' => {
-          
-          val doubleOf = eval(expr.substring(0, opLoc))/eval(expr.substring(opLoc+1,expr.length))
-          if (doubleOf.isInfinite())
-            0.0
-          else
-            doubleOf
-        }
+        case '/' => eval(expr.substring(0, opLoc))/eval(expr.substring(opLoc+1,expr.length))
+//        {
+//          
+//          val doubleOf = eval(expr.substring(0, opLoc))/eval(expr.substring(opLoc+1,expr.length))
+//          if (doubleOf.isInfinite())
+//            0.0
+//          else
+//            doubleOf
+//        }
       }
     }
   }
