@@ -106,7 +106,7 @@ public class MainView extends JFrame {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				Empresas empresa = new Empresas();
+				EmpresasView empresa = new EmpresasView();
 				empresa.setVisible(true);
 			}
 		});
@@ -115,7 +115,7 @@ public class MainView extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				Indicadores indicador = new Indicadores();
+				IndicadoresView indicador = new IndicadoresView();
 				indicador.setVisible(true);
 			}
 		});
@@ -124,7 +124,7 @@ public class MainView extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				Metodologias metodologia = new Metodologias();
+				MetodologiasView metodologia = new MetodologiasView();
 				metodologia.setVisible(true);
 			}
 		});

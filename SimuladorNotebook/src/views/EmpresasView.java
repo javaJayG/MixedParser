@@ -25,7 +25,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
-public class Empresas extends JFrame {
+public class EmpresasView extends JFrame {
 
 	private JPanel ctpMain;
 	private static JList lstEmpresas;
@@ -45,7 +45,7 @@ public class Empresas extends JFrame {
 			{
 				try 
 				{
-					Empresas frame = new Empresas();
+					EmpresasView frame = new EmpresasView();
 					frame.setVisible(true);
 				} 
 				catch (Exception e)
@@ -59,7 +59,7 @@ public class Empresas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Empresas() 
+	public EmpresasView() 
 	{
 		setTitle("Información sobre valores de cuentas");
 		initComponents();

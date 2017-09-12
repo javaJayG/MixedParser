@@ -18,7 +18,7 @@ import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Indicadores extends JFrame {
+public class IndicadoresView extends JFrame {
 
 	private JPanel contentPane;
 	private JList list_1;
@@ -49,7 +49,7 @@ public class Indicadores extends JFrame {
 			{
 				try 
 				{
-					Indicadores frame = new Indicadores();
+					IndicadoresView frame = new IndicadoresView();
 					frame.setVisible(true);
 				} 
 				catch (Exception e) 
@@ -63,7 +63,7 @@ public class Indicadores extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Indicadores() 
+	public IndicadoresView() 
 	{
 		initComponentes();
 		createEvents();

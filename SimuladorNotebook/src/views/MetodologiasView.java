@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Metodologias extends JFrame 
+public class MetodologiasView extends JFrame 
 {
 
 	private JPanel contentPane;
@@ -23,7 +23,7 @@ public class Metodologias extends JFrame
 			{
 				try 
 				{
-					Metodologias frame = new Metodologias();
+					MetodologiasView frame = new MetodologiasView();
 					frame.setVisible(true);
 				} 
 				catch (Exception e) 
@@ -37,7 +37,7 @@ public class Metodologias extends JFrame
 	/**
 	 * Create the frame.
 	 */
-	public Metodologias() 
+	public MetodologiasView() 
 	{
 		initComponents();
 		createEvents();
