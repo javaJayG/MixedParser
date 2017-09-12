@@ -70,7 +70,7 @@ public class Indicadores extends JFrame {
 	}
 	private void initComponentes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 459);
+		setBounds(100, 100, 527, 564);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -92,7 +92,7 @@ public class Indicadores extends JFrame {
 		
 		lblNuevoIndicador = new JLabel("<html>Indicador a guardar: <br><b>NombreIndicador=expresion</b>, tal que: <br>expresion incluye indicadores y/o cuentas</html>");
 		
-		lblAplicarElSiguiente = new JLabel("<html>Seleccionar Empresa, periodo e indicador<br>presionar el botÃ³n \"Aplicar indicador\"<br>Aplicar el siguiente indicador</html>");
+		lblAplicarElSiguiente = new JLabel("<html>Seleccionar Empresa, periodo e indicador<br>presionar el botón \"Aplicar indicador\"<br>Aplicar el siguiente indicador</html>");
 		
 		JList list_4 = new JList();
 		
@@ -110,29 +110,32 @@ public class Indicadores extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(19)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(list, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEmpresas))
-							.addGap(18)
+								.addComponent(lblEmpresas)
+								.addComponent(list, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(list_1, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblPeriodos))
-							.addGap(18)
+								.addComponent(lblPeriodos)
+								.addComponent(list_1, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(list_2, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblResultadoDeAplicar)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(14)
+									.addComponent(lblResultadoDeAplicar))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(list_2, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(27)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnAplicarIndicador, GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-								.addComponent(list_3, GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+								.addComponent(list_3, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+								.addComponent(btnAplicarIndicador, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
 								.addComponent(lblAplicarElSiguiente, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
 								.addComponent(list_4, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 							.addGap(34)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblNuevoIndicador, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-								.addComponent(textField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-								.addComponent(btnCrearNuevoIndicador, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))))
-					.addGap(18))
+								.addComponent(lblNuevoIndicador, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+								.addComponent(textField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+								.addComponent(btnCrearNuevoIndicador, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))))
+					.addGap(14))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -143,9 +146,9 @@ public class Indicadores extends JFrame {
 							.addComponent(lblResultadoDeAplicar, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 							.addGap(1))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblEmpresas, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblPeriodos, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblEmpresas)
+								.addComponent(lblPeriodos, GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(list, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
@@ -159,8 +162,8 @@ public class Indicadores extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 							.addComponent(list_4)
-							.addComponent(list_3, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
-						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+							.addComponent(list_3, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnAplicarIndicador)
@@ -174,7 +177,7 @@ public class Indicadores extends JFrame {
 	private void createEvents() {
 		btnCrearNuevoIndicador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				//cargarIndicador();
 			}
 		});
 	}
