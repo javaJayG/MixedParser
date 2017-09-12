@@ -12,13 +12,20 @@ import tipos.Empresa;
 public class CuentasHandler {
 	
 	HashSet<String> unrepeatedNombresDeCuentas ;
+	HashSet<String> unrepeatedNombresDeIndicadres ;
 	
 	public CuentasHandler() {
-		this.setUnrepeatedCuentasOfAllEmpresas
-					(TestSerializingAndDeserializing.getEmpresas());
+		this.setUnrepeatedCuentasEIndicadores
+					( TestSerializingAndDeserializing.getEmpresas () );
+		//recordar que getEmpresas devuelve las empresas que están en
+		//memoria, no las está leyendo AHORA del archivo,
+		//pero definitivamente lo sabe hacer
+					//don't forget getIndicadores!!!
+					//getEmpresas() -> devuelve cuentas
+					//--------------------------------
 	}
 	
-	public void setUnrepeatedCuentasOfAllEmpresas(List<Empresa> empresas)
+	public void setUnrepeatedCuentasEIndicadores( List <Empresa> empresas )
 	{
 		this.unrepeatedNombresDeCuentas = new HashSet<>(); 
 		Stream <Cuenta>cuentas = empresas.stream()
@@ -27,7 +34,18 @@ public class CuentasHandler {
 		List<String> nombresDeCuentas = cuentas
 								.map(e -> e.getNombre())
 								.collect(Collectors.toList());
+		//TODO a cada uno estos los creo como un List<SinRepetirIndicadoresYCuentas>
+		//del siguiente modo, 
+		//
+		//nombresDeCuentas.forEach(e -> 
+		// 			{nuevaCuenta = new SinRepetirIndicadoresYCuentas(true,e);
+		//				CuentasEIndicadoresSinRepetir.add(nuevaCuenta);
+		//						}	
+		// 							)
+		//
 		nombresDeCuentas.forEach(e -> unrepeatedNombresDeCuentas.add(e));
+		//unrepeatedNombresDeCuentas ya no es de strings sino de
+		//CuentasEIndicadoresSinRepetir
 		unrepeatedNombresDeCuentas.forEach(System.out::println);
 		System.out.println("Contiene el HashSet 'EBITDA': "+
 				this.existeLaCuenta("EBITDA"));

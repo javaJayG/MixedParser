@@ -35,7 +35,7 @@ public class BusquedaJson {
 			
 			
 			
-//			empresasParseadas.forEach(System.out::println);
+			empresasParseadas.forEach(System.out::println);
 			
 			List<List <Cuenta>> listaDeCuentas = 
 					empresasParseadas.stream().filter(e -> "Facebook".equals(e.getNombre()))
@@ -45,10 +45,11 @@ public class BusquedaJson {
 									.flatMap(List::stream)
 									.collect(Collectors.toList());
 			Gson gson_2 = new GsonBuilder().setPrettyPrinting().create();
+			System.out.println("Encontrado para la cuenta 'Facebook':");
 			cuentas.forEach(e->System.out.println(e.getNombre()+gson_2.toJson(e.getPeriodos())));
 			fileReader.close();
 			System.out.println("Content of file:");
-//			System.out.println(stringBuffer);
+			System.out.println(stringBuffer);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

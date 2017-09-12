@@ -26,17 +26,17 @@ public class TestSerializingAndDeserializing {
 		//TODO: manejar el tema de las fechas como strings
 		
 		//cargo varios periodos a esas cuentas
-		List<Periodo> periodos_uno_ROE = new ArrayList<Periodo>();
+		List<Periodo> periodos_uno_FDS = new ArrayList<Periodo>();
 		List<Periodo> periodos_uno_EBITDA = new ArrayList<Periodo>();
 		List<Periodo> periodos_uno_IngresoNeto = new ArrayList<Periodo>();
 		
 		List<Periodo> periodos_dos_IngresoNeto = new ArrayList<Periodo>();
 		List<Periodo> periodos_dos_EBITDA = new ArrayList<Periodo>();
-		List<Periodo> periodos_dos_ROE = new ArrayList<Periodo>();
+		List<Periodo> periodos_dos_FDS = new ArrayList<Periodo>();
 		
 		List<Periodo> periodos_tres_IngresoNeto = new ArrayList<Periodo>();
 		List<Periodo> periodos_tres_EBITDA = new ArrayList<Periodo>();
-		List<Periodo> periodos_tres_ROE = new ArrayList<Periodo>();
+		List<Periodo> periodos_tres_FDS = new ArrayList<Periodo>();
 		
 		Date initialDate2014 = new Date (2014 + SHIFT_YEAR, 01 + SHIFT_MONTH, 01, 00, 00, 00) ;
 		Date finalDate2014 = new Date (2014 + SHIFT_YEAR, 12 + SHIFT_MONTH, 31, 00, 00, 00) ;
@@ -45,9 +45,12 @@ public class TestSerializingAndDeserializing {
 		Date initialDate2016 = new Date (2016 + SHIFT_YEAR, 01 + SHIFT_MONTH, 01, 00, 00, 00) ;
 		Date finalDate2016 = new Date (2016 + SHIFT_YEAR, 12 + SHIFT_MONTH, 31, 00, 00, 00) ;
 		
-		periodos_uno_ROE.add(new Periodo(initialDate2014, finalDate2014, 50000));
-		periodos_uno_ROE.add(new Periodo(initialDate2015, finalDate2015, 60000));
-		periodos_uno_ROE.add(new Periodo(initialDate2016, finalDate2016, 70000));
+		//TODO Date semestral2013PrimerSem
+		//TODO Date semestral2013SegundoSem
+		
+		periodos_uno_FDS.add(new Periodo(initialDate2014, finalDate2014, 50000));
+		periodos_uno_FDS.add(new Periodo(initialDate2015, finalDate2015, 60000));
+		periodos_uno_FDS.add(new Periodo(initialDate2016, finalDate2016, 70000));
 		
 		periodos_uno_EBITDA.add(new Periodo(initialDate2016, finalDate2016, 111111));
 		periodos_uno_EBITDA.add(new Periodo(initialDate2015, finalDate2015, 123456));
@@ -57,9 +60,9 @@ public class TestSerializingAndDeserializing {
 		periodos_uno_IngresoNeto.add(new Periodo(initialDate2015, finalDate2015, 789789));
 		periodos_uno_IngresoNeto.add(new Periodo(initialDate2016, finalDate2016, 123654));
 		
-		periodos_dos_ROE.add(new Periodo(initialDate2014, finalDate2014, 66546));
-		periodos_dos_ROE.add(new Periodo(initialDate2015, finalDate2015, 64555));
-		periodos_dos_ROE.add(new Periodo(initialDate2016, finalDate2016, 65465));
+		periodos_dos_FDS.add(new Periodo(initialDate2014, finalDate2014, 66546));
+		periodos_dos_FDS.add(new Periodo(initialDate2015, finalDate2015, 64555));
+		periodos_dos_FDS.add(new Periodo(initialDate2016, finalDate2016, 65465));
 		
 		periodos_dos_EBITDA.add(new Periodo(initialDate2016, finalDate2016, 98798));
 		periodos_dos_EBITDA.add(new Periodo(initialDate2015, finalDate2015, 74145));
@@ -69,9 +72,9 @@ public class TestSerializingAndDeserializing {
 		periodos_dos_IngresoNeto.add(new Periodo(initialDate2015, finalDate2015, 48632));
 		periodos_dos_IngresoNeto.add(new Periodo(initialDate2016, finalDate2016, 48963));
 		
-		periodos_tres_ROE.add(new Periodo(initialDate2014, finalDate2014, 963963));
-		periodos_tres_ROE.add(new Periodo(initialDate2015, finalDate2015, 17888));
-		periodos_tres_ROE.add(new Periodo(initialDate2016, finalDate2016, 664654132));
+		periodos_tres_FDS.add(new Periodo(initialDate2014, finalDate2014, 963963));
+		periodos_tres_FDS.add(new Periodo(initialDate2015, finalDate2015, 17888));
+		periodos_tres_FDS.add(new Periodo(initialDate2016, finalDate2016, 664654132));
 		
 		periodos_tres_EBITDA.add(new Periodo(initialDate2016, finalDate2016, 8946));
 		periodos_tres_EBITDA.add(new Periodo(initialDate2015, finalDate2015, 56613));
@@ -86,18 +89,26 @@ public class TestSerializingAndDeserializing {
 		List<Cuenta> cuentas_ebay= new ArrayList<Cuenta>();
 		List<Cuenta> cuentas_amazon= new ArrayList<Cuenta>();
 		
-		cuentas_fb.add(new Cuenta("AccionesEnBitCoins", periodos_uno_ROE));
-		cuentas_fb.add(new Cuenta("ROE", periodos_uno_ROE));
+		cuentas_fb.add(new Cuenta("AccionesEnBitCoins", periodos_uno_FDS));
+		cuentas_fb.add(new Cuenta("FDS", periodos_uno_FDS));
 		cuentas_fb.add(new Cuenta("EBITDA", periodos_uno_EBITDA));
 		cuentas_fb.add(new Cuenta("IngresoNeto", periodos_uno_IngresoNeto));
 		
-		cuentas_ebay.add(new Cuenta("ROE", periodos_dos_ROE));
+		cuentas_ebay.add(new Cuenta("FDS", periodos_dos_FDS));
 		cuentas_ebay.add(new Cuenta("EBITDA", periodos_dos_EBITDA));
 		cuentas_ebay.add(new Cuenta("IngresoNeto", periodos_dos_IngresoNeto));
 		
-		cuentas_amazon.add(new Cuenta("ROE", periodos_tres_ROE));
+		cuentas_amazon.add(new Cuenta("FDS", periodos_tres_FDS));
 		cuentas_amazon.add(new Cuenta("EBITDA", periodos_tres_EBITDA));
 		cuentas_amazon.add(new Cuenta("IngresoNeto", periodos_tres_IngresoNeto));
+		
+		//TODO agregar ingresos netos en operaciones continuas
+		
+		//TODO agregar ingresos netos en operaciones discontinuadas
+		
+		//TODO El indicador Ingreso Neto = i.n.e.o.c + i.n.e.o.d
+		
+		//TODO 
 		
 		//cargo varias empresas
 		Empresa fb = new Empresa("Facebook", cuentas_fb);
@@ -108,6 +119,12 @@ public class TestSerializingAndDeserializing {
 		empresas.add(fb);
 		empresas.add(ebay);
 		empresas.add(amazon);
+		//TODO empresas.add(snapchat)
+		//TODO empresas.add(adidas)
+		//TODO empresas.add(nike)
+		//TODO empresas.add(mercadoLibre)
+		//TODO empresas.add(starbucks)
+		
 		return empresas;
 		
 	}
@@ -142,14 +159,6 @@ public class TestSerializingAndDeserializing {
 			empresasJson.add(gson.toJson(e));
 		}
 		return empresasJson;
-	}
-	
-	public static List<String> gimmeAccounts(){
-		List<String> accounts = new ArrayList<String>();
-		accounts.add("ROE");
-		accounts.add("EBITDA");
-		accounts.add("Ventas discontinuadas");
-		return accounts;
 	}
 	
 }

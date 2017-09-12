@@ -26,17 +26,17 @@ public class TestDivideIndicador {
 	{
 		this.cuentasHandler = new CuentasHandler();
 		this.cuentas = new ArrayList<>();
-		//Si queda un string envía NumberFormatException por EBITDA
+		//Si queda un string envÃ­a NumberFormatException por EBITDA
 		
 		obtainSidesOfExp("IdIndicador=4+EBITDA+-8/0");
-		System.out.println("Expresión: "+this.expresion);
+		System.out.println("ExpresiÃ³n: "+this.expresion);
 		imprimirIdAndformula();
 	}
 	//
 	public void imprimirIdAndformula()
 	{
-		System.out.println("Fórmula: "+this.formulaString);
-		System.out.println("Expresión: "+this.expresion);
+		System.out.println("FÃ³rmula: "+this.formulaString);
+		System.out.println("ExpresiÃ³n: "+this.expresion);
 		String formula = transformarVariablesANumeros(this.expresion);
 		try
 		{
@@ -67,20 +67,20 @@ public class TestDivideIndicador {
 	        if ( !recognizingVar )  {
 	          recognizingVar = true ;
 	        }
-	        //Encontré la variable que se halla más a la izquierda de la expresión,
+	        //Encontrï¿½ la variable que se halla mï¿½s a la izquierda de la expresiï¿½n,
 	        //la cual era la unica que quedaba
 	        if (i == 0)
 	        {
-	          //encontró una variable que fue leída de derecha a izq
+	          //encontrï¿½ una variable que fue leï¿½da de derecha a izq
 	          variableName = ScalaUtils.reverseThis(resultado);
 	          
-	          //expresionFinal tiene la concatenación parcial de haber
+	          //expresionFinal tiene la concatenaciï¿½n parcial de haber
 	          //reemplazado los nombres de variables por Doubles
 	          String strAux = expresionFinal ;
 	          //TODO: poner bloques try catch para manejar una variable sintacticamente incorrecta
-	          //si estaba reconociendo una variable y encontró otra cosa
+	          //si estaba reconociendo una variable y encontrï¿½ otra cosa
 	          
-	          //la expresión final es con el reemplazo de todas las variables a un double
+	          //la expresiï¿½n final es con el reemplazo de todas las variables a un double
 	          //strAux
 	          if ( cuentasHandler.existeLaCuenta(variableName) )
 	          {
@@ -100,7 +100,7 @@ public class TestDivideIndicador {
 	        {
 	          variableName = ScalaUtils.reverseThis(resultado);
 	          String strAux = expresionFinal;
-	          //si estaba reconociendo una variable y encontré otra cosa
+	          //si estaba reconociendo una variable y encontrï¿½ otra cosa
 	          if ( cuentasHandler.existeLaCuenta(variableName) )
 	          {
 	        	  expresionFinal = expr.charAt(i) + String.valueOf(0) + strAux;
