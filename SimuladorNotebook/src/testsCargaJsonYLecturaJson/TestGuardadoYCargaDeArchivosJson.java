@@ -1,4 +1,4 @@
-package tests;
+package testsCargaJsonYLecturaJson;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import tipos.Cuenta;
 import tipos.Empresa;
 import tipos.Periodo;
 
-public class TestWholeShit {
+public class TestGuardadoYCargaDeArchivosJson {
 	
 	public static void main(String[] args) {
 		PersistedRepo repositorioDeEmpresas = new RepoEmpresa();
